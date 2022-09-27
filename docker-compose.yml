@@ -1,0 +1,23 @@
+version: '3.4'
+services:    
+    web:
+        image: adessowebapinodejs
+        build: .
+        command: node index.js
+        ports: 
+            - "4040:4040"
+        volumes: 
+            - ./src:/usr/app/src
+        networks:
+            - adesso_backend_node
+        # depends_on:
+        #     - mongodb
+    # mongodb:
+    #     image: "mongo"
+    #     ports:
+    #         - "27023:27023"
+
+networks:
+  adesso_backend_node:
+    driver: bridge
+    external: true
